@@ -62,7 +62,7 @@ namespace negocio
                 conexion.Close();
             }
         }
-
+        
         public void agregar(producto nuevo)
         {
             accesoDatos datos = new accesoDatos();
@@ -76,9 +76,9 @@ namespace negocio
                 datos.setearParamentro("@Codigo", nuevo.Codigo);
                 datos.setearParamentro("@Descripcion", nuevo.Descripcion);
                 datos.setearParamentro("@ImagenUrl", nuevo.ImagenUrl);
-                datos.setearParamentro("@Precio", nuevo.Precio);
+                datos.setearParamentro("@Precio", nuevo.Precio);                
                 datos.setearParamentro("@idCategoria", nuevo.Categoria.Id);
-                datos.setearParamentro("@idMarca", nuevo.Marca.Descripcion);   
+                datos.setearParamentro("@idMarca", nuevo.Marca.Id);   
                 
                 datos.ejecutarAccion();
             }

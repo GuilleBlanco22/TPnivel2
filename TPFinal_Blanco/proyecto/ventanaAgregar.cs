@@ -12,6 +12,7 @@ using negocio;
 using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
+using System.Globalization;
 
 
 namespace proyecto
@@ -40,45 +41,64 @@ namespace proyecto
         {
             //producto producto = new producto();
             productoNegocio negocio = new productoNegocio();
+            string esNumero = tboxPrecio.Text;
+            float i = 0;
 
-            try
+            //validacion para que se ingresen los campos y solo numeros en el precio
+            if (tboxCodigo.Text == "" || tboxNombre.Text == "" || tboxPrecio.Text == "")
             {
-                if (producto == null)
-                    producto = new producto();
-
-                producto.Codigo = tboxCodigo.Text;
-                producto.Nombre = tboxNombre.Text;
-                producto.Descripcion = tboxDescripcion.Text;
-                producto.ImagenUrl = tboxUrl.Text;
-                producto.Categoria.Id = (int)cboxCategoria.SelectedValue;
-                producto.Marca.Id = (int)cboxMarca.SelectedValue;
-                //producto.Categoria = (categoria)cboxCategoria.SelectedItem;
-                //producto.Marca = (marca)cboxMarca.SelectedItem;
-                producto.Precio = decimal.Parse(tboxPrecio.Text);
-
-                if (producto.Id != 0)
-                {
-                    negocio.modificar(producto);
-                    MessageBox.Show("Modificado con exito!");
-                }
-                else
-                {
-                    negocio.agregar(producto);
-                    MessageBox.Show("Agregado con exito!");
-                }
-                if (imagen != null && !(tboxUrl.Text.ToUpper().Contains("HTTP")))
-                {
-                    File.Copy(imagen.FileName, ConfigurationManager.AppSettings["carpeta-imagenes"] + imagen.SafeFileName);
-                }
-
-                Close();
-
+                MessageBox.Show("Por favor complete los campos obligatorios: Codigo, Nombre y Precio");
 
             }
-            catch (Exception ex)
+            else if (!(float.TryParse(esNumero, out i))) 
+            {
+                MessageBox.Show("Solo numeros para el precio.");
+            }
+            else
             {
 
-                MessageBox.Show(ex.ToString());
+                try
+                {
+                    if (producto == null)
+                        producto = new producto();
+
+                    producto.Categoria = new categoria();
+                    producto.Marca = new marca();
+
+                    producto.Codigo = tboxCodigo.Text;
+                    producto.Nombre = tboxNombre.Text;
+                    producto.Descripcion = tboxDescripcion.Text;
+                    producto.ImagenUrl = tboxUrl.Text;
+                    producto.Categoria.Id = (int)cboxCategoria.SelectedValue;
+                    producto.Marca.Id = (int)cboxMarca.SelectedValue;
+                    //producto.Categoria = (categoria)cboxCategoria.SelectedItem;
+                    //producto.Marca = (marca)cboxMarca.SelectedItem;
+                    producto.Precio = decimal.Parse(tboxPrecio.Text);
+
+                    if (producto.Id != 0)
+                    {
+                        negocio.modificar(producto);
+                        MessageBox.Show("Modificado con exito!");
+                    }
+                    else
+                    {
+                        negocio.agregar(producto);
+                        MessageBox.Show("Agregado con exito!");
+                    }
+                    if (imagen != null && !(tboxUrl.Text.ToUpper().Contains("HTTP")))
+                    {
+                        File.Copy(imagen.FileName, ConfigurationManager.AppSettings["carpeta-imagenes"] + imagen.SafeFileName);
+                    }
+
+                    Close();
+
+
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.ToString());
+                }
             }
 
 
@@ -151,6 +171,21 @@ namespace proyecto
 
                 //File.Copy(imagen.FileName, ConfigurationManager.AppSettings["carpeta-imagenes"] + imagen.SafeFileName);
             }
+        }
+
+
+
+
+
+
+
+
+
+
+     
+        private void tboxPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+   
         }
     }
 } 

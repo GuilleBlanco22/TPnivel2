@@ -21,13 +21,13 @@ namespace negocio
 				datos.setearConsulta("Select Descripcion, Id From CATEGORIAS");
 				datos.ejecutarLectura();
 
-				foreach (var item in lista)
+				//foreach (var item in lista)
 							
-				//while (datos.Lector.Read())
+				while (datos.Lector.Read())
 				{
 					categoria aux = new categoria();
 					aux.Id = (int)datos.Lector["Id"];
-					aux.Descripcion = (string)datos.Lector["Description"];
+					aux.Descripcion = (string)datos.Lector["Descripcion"];
 
 					lista.Add(aux);
 				}

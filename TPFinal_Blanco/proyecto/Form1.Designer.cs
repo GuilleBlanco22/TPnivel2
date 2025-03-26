@@ -61,22 +61,23 @@
             // 
             this.lblProductos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblProductos.AutoSize = true;
-            this.lblProductos.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblProductos.BackColor = System.Drawing.Color.CadetBlue;
             this.lblProductos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProductos.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblProductos.Location = new System.Drawing.Point(48, 59);
+            this.lblProductos.Location = new System.Drawing.Point(412, 49);
             this.lblProductos.Name = "lblProductos";
-            this.lblProductos.Size = new System.Drawing.Size(106, 25);
+            this.lblProductos.Size = new System.Drawing.Size(100, 25);
             this.lblProductos.TabIndex = 0;
-            this.lblProductos.Text = "Productos:";
+            this.lblProductos.Text = "Productos";
             // 
             // lblBuscar
             // 
             this.lblBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblBuscar.AutoSize = true;
+            this.lblBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuscar.Location = new System.Drawing.Point(50, 112);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(48, 15);
+            this.lblBuscar.Size = new System.Drawing.Size(52, 16);
             this.lblBuscar.TabIndex = 1;
             this.lblBuscar.Text = "Buscar:";
             // 
@@ -87,9 +88,9 @@
             this.btnSalir.ForeColor = System.Drawing.Color.IndianRed;
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(907, 496);
+            this.btnSalir.Location = new System.Drawing.Point(902, 496);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 52);
+            this.btnSalir.Size = new System.Drawing.Size(80, 52);
             this.btnSalir.TabIndex = 8;
             this.btnSalir.Text = "Salir";
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -170,6 +171,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Location = new System.Drawing.Point(53, 387);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(90, 43);
@@ -181,7 +183,8 @@
             // btnModificar
             // 
             this.btnModificar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnModificar.Location = new System.Drawing.Point(162, 387);
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.Location = new System.Drawing.Point(166, 387);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(91, 43);
             this.btnModificar.TabIndex = 2;
@@ -192,6 +195,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(280, 387);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(91, 43);
@@ -203,7 +207,7 @@
             // tboxBuscar
             // 
             this.tboxBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tboxBuscar.Location = new System.Drawing.Point(94, 109);
+            this.tboxBuscar.Location = new System.Drawing.Point(108, 108);
             this.tboxBuscar.Name = "tboxBuscar";
             this.tboxBuscar.Size = new System.Drawing.Size(169, 20);
             this.tboxBuscar.TabIndex = 0;
@@ -213,9 +217,9 @@
             // btnBuscar
             // 
             this.btnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnBuscar.Location = new System.Drawing.Point(676, 491);
+            this.btnBuscar.Location = new System.Drawing.Point(671, 487);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(75, 31);
             this.btnBuscar.TabIndex = 7;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -225,9 +229,10 @@
             // 
             this.lblBusquedaAvanzada.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblBusquedaAvanzada.AutoSize = true;
+            this.lblBusquedaAvanzada.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBusquedaAvanzada.Location = new System.Drawing.Point(50, 457);
             this.lblBusquedaAvanzada.Name = "lblBusquedaAvanzada";
-            this.lblBusquedaAvanzada.Size = new System.Drawing.Size(122, 15);
+            this.lblBusquedaAvanzada.Size = new System.Drawing.Size(136, 16);
             this.lblBusquedaAvanzada.TabIndex = 16;
             this.lblBusquedaAvanzada.Text = "Busqueda Avanzada:";
             // 
@@ -246,7 +251,7 @@
             this.cboxCampo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cboxCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxCampo.FormattingEnabled = true;
-            this.cboxCampo.Location = new System.Drawing.Point(96, 492);
+            this.cboxCampo.Location = new System.Drawing.Point(106, 493);
             this.cboxCampo.Name = "cboxCampo";
             this.cboxCampo.Size = new System.Drawing.Size(121, 21);
             this.cboxCampo.TabIndex = 4;
@@ -256,7 +261,7 @@
             // 
             this.lblCriterio.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(228, 496);
+            this.lblCriterio.Location = new System.Drawing.Point(268, 496);
             this.lblCriterio.Name = "lblCriterio";
             this.lblCriterio.Size = new System.Drawing.Size(46, 15);
             this.lblCriterio.TabIndex = 19;
@@ -267,7 +272,7 @@
             this.cboxCriterio.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cboxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxCriterio.FormattingEnabled = true;
-            this.cboxCriterio.Location = new System.Drawing.Point(320, 488);
+            this.cboxCriterio.Location = new System.Drawing.Point(320, 493);
             this.cboxCriterio.Name = "cboxCriterio";
             this.cboxCriterio.Size = new System.Drawing.Size(121, 21);
             this.cboxCriterio.TabIndex = 5;
@@ -276,7 +281,7 @@
             // 
             this.lblFiltro.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(470, 496);
+            this.lblFiltro.Location = new System.Drawing.Point(478, 496);
             this.lblFiltro.Name = "lblFiltro";
             this.lblFiltro.Size = new System.Drawing.Size(34, 15);
             this.lblFiltro.TabIndex = 21;
@@ -285,7 +290,7 @@
             // tboxFiltro
             // 
             this.tboxFiltro.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tboxFiltro.Location = new System.Drawing.Point(558, 487);
+            this.tboxFiltro.Location = new System.Drawing.Point(518, 493);
             this.tboxFiltro.Name = "tboxFiltro";
             this.tboxFiltro.Size = new System.Drawing.Size(100, 20);
             this.tboxFiltro.TabIndex = 6;
@@ -294,7 +299,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(999, 560);
             this.Controls.Add(this.tboxFiltro);
             this.Controls.Add(this.lblFiltro);
@@ -318,7 +323,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1220, 691);
-            this.MinimumSize = new System.Drawing.Size(1006, 580);
+            this.MinimumSize = new System.Drawing.Size(1006, 588);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";

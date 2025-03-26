@@ -54,27 +54,27 @@
             // 
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(111, 74);
+            this.lblCodigo.Location = new System.Drawing.Point(87, 52);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(56, 17);
+            this.lblCodigo.Size = new System.Drawing.Size(65, 17);
             this.lblCodigo.TabIndex = 0;
-            this.lblCodigo.Text = "Codigo:";
+            this.lblCodigo.Text = "* Codigo:";
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(105, 103);
+            this.lblNombre.Location = new System.Drawing.Point(81, 81);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(62, 17);
+            this.lblNombre.Size = new System.Drawing.Size(71, 17);
             this.lblNombre.TabIndex = 1;
-            this.lblNombre.Text = "Nombre:";
+            this.lblNombre.Text = "* Nombre:";
             // 
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescripcion.Location = new System.Drawing.Point(81, 132);
+            this.lblDescripcion.Location = new System.Drawing.Point(66, 110);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(86, 17);
             this.lblDescripcion.TabIndex = 2;
@@ -83,7 +83,7 @@
             // tboxCodigo
             // 
             this.tboxCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxCodigo.Location = new System.Drawing.Point(173, 71);
+            this.tboxCodigo.Location = new System.Drawing.Point(158, 49);
             this.tboxCodigo.Name = "tboxCodigo";
             this.tboxCodigo.Size = new System.Drawing.Size(119, 23);
             this.tboxCodigo.TabIndex = 0;
@@ -91,7 +91,7 @@
             // tboxNombre
             // 
             this.tboxNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxNombre.Location = new System.Drawing.Point(173, 100);
+            this.tboxNombre.Location = new System.Drawing.Point(158, 78);
             this.tboxNombre.Name = "tboxNombre";
             this.tboxNombre.Size = new System.Drawing.Size(119, 23);
             this.tboxNombre.TabIndex = 1;
@@ -99,7 +99,7 @@
             // tboxDescripcion
             // 
             this.tboxDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxDescripcion.Location = new System.Drawing.Point(173, 129);
+            this.tboxDescripcion.Location = new System.Drawing.Point(158, 107);
             this.tboxDescripcion.Name = "tboxDescripcion";
             this.tboxDescripcion.Size = new System.Drawing.Size(119, 23);
             this.tboxDescripcion.TabIndex = 2;
@@ -115,7 +115,7 @@
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(99, 41);
-            this.btnAgregar.TabIndex = 7;
+            this.btnAgregar.TabIndex = 8;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -131,7 +131,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(99, 41);
-            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -140,7 +140,7 @@
             // 
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(94, 190);
+            this.lblCategoria.Location = new System.Drawing.Point(79, 168);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(73, 17);
             this.lblCategoria.TabIndex = 8;
@@ -150,7 +150,7 @@
             // 
             this.lblMarca.AutoSize = true;
             this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarca.Location = new System.Drawing.Point(116, 220);
+            this.lblMarca.Location = new System.Drawing.Point(101, 198);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(51, 17);
             this.lblMarca.TabIndex = 9;
@@ -160,45 +160,46 @@
             // 
             this.lblPrecio.AutoSize = true;
             this.lblPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecio.Location = new System.Drawing.Point(115, 250);
+            this.lblPrecio.Location = new System.Drawing.Point(91, 228);
             this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(52, 17);
+            this.lblPrecio.Size = new System.Drawing.Size(61, 17);
             this.lblPrecio.TabIndex = 12;
-            this.lblPrecio.Text = "Precio:";
+            this.lblPrecio.Text = "* Precio:";
             // 
             // tboxPrecio
             // 
             this.tboxPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxPrecio.Location = new System.Drawing.Point(173, 247);
+            this.tboxPrecio.Location = new System.Drawing.Point(158, 225);
             this.tboxPrecio.Name = "tboxPrecio";
             this.tboxPrecio.Size = new System.Drawing.Size(119, 23);
-            this.tboxPrecio.TabIndex = 6;
+            this.tboxPrecio.TabIndex = 7;
+            this.tboxPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tboxPrecio_KeyPress);
             // 
             // cboxCategoria
             // 
             this.cboxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxCategoria.FormattingEnabled = true;
-            this.cboxCategoria.Location = new System.Drawing.Point(173, 187);
+            this.cboxCategoria.Location = new System.Drawing.Point(158, 165);
             this.cboxCategoria.Name = "cboxCategoria";
             this.cboxCategoria.Size = new System.Drawing.Size(119, 24);
-            this.cboxCategoria.TabIndex = 4;
+            this.cboxCategoria.TabIndex = 5;
             // 
             // cboxMarca
             // 
             this.cboxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxMarca.FormattingEnabled = true;
-            this.cboxMarca.Location = new System.Drawing.Point(173, 217);
+            this.cboxMarca.Location = new System.Drawing.Point(158, 195);
             this.cboxMarca.Name = "cboxMarca";
             this.cboxMarca.Size = new System.Drawing.Size(119, 24);
-            this.cboxMarca.TabIndex = 5;
+            this.cboxMarca.TabIndex = 6;
             // 
             // lblUrl
             // 
             this.lblUrl.AutoSize = true;
             this.lblUrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUrl.Location = new System.Drawing.Point(87, 161);
+            this.lblUrl.Location = new System.Drawing.Point(72, 139);
             this.lblUrl.Name = "lblUrl";
             this.lblUrl.Size = new System.Drawing.Size(80, 17);
             this.lblUrl.TabIndex = 16;
@@ -207,7 +208,7 @@
             // tboxUrl
             // 
             this.tboxUrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tboxUrl.Location = new System.Drawing.Point(173, 158);
+            this.tboxUrl.Location = new System.Drawing.Point(158, 136);
             this.tboxUrl.Name = "tboxUrl";
             this.tboxUrl.Size = new System.Drawing.Size(119, 23);
             this.tboxUrl.TabIndex = 3;
@@ -215,19 +216,19 @@
             // 
             // pboxAgregar
             // 
-            this.pboxAgregar.Location = new System.Drawing.Point(84, 292);
+            this.pboxAgregar.Location = new System.Drawing.Point(69, 292);
             this.pboxAgregar.Name = "pboxAgregar";
-            this.pboxAgregar.Size = new System.Drawing.Size(208, 193);
+            this.pboxAgregar.Size = new System.Drawing.Size(237, 203);
             this.pboxAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pboxAgregar.TabIndex = 18;
             this.pboxAgregar.TabStop = false;
             // 
             // btnAgregarImagen
             // 
-            this.btnAgregarImagen.Location = new System.Drawing.Point(298, 158);
+            this.btnAgregarImagen.Location = new System.Drawing.Point(283, 136);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(23, 23);
-            this.btnAgregarImagen.TabIndex = 19;
+            this.btnAgregarImagen.TabIndex = 4;
             this.btnAgregarImagen.Text = "+";
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click_1);
@@ -236,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCyan;
+            this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(378, 627);
             this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.pboxAgregar);

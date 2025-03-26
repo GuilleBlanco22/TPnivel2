@@ -130,7 +130,6 @@ namespace proyecto
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Seleccione un producto para modificar.");
             }
             
@@ -146,6 +145,7 @@ namespace proyecto
             producto seleccionado;
             try
             {
+                //lanza advertencia de eliminar
                 DialogResult respuesta = MessageBox.Show("¿Desea eliminar el producto?","Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
@@ -192,7 +192,7 @@ namespace proyecto
         {
             foreach (char caracter in cadena)
             {
-                if (!(char.IsNumber(caracter)))
+                if (!(char.IsNumber(caracter)))                  
                     return false;
             }
             return true;
@@ -260,5 +260,7 @@ namespace proyecto
                 cboxCriterio.Items.Add("Igual a");
             }
         }
+
+        
     }
 }
