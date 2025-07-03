@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Goku Runner Avanzado</title>
+  <style>
+    body, html { margin: 0; padding: 0; overflow: hidden; }
+    #juego {
+      position: relative;
+      width: 100vw; height: 400px;
+      background: url('https://i.pinimg.com/originals/e9/e5/e1/e9e5e131f0b07c7735b272940da75293.jpg') center/cover no-repeat;
+      font-family: sans-serif;
+    }
+    #goku {
+      position: absolute;
+      bottom: 50px; left: 50px;
+      width: 120px; height: 150px;
+      transition: bottom 0.2s;
+    }
+    .ssj1 { background: url('https://pbs.twimg.com/media/FlmouGYWIAA5Oea.png') center/cover no-repeat; }
+    .ssj2 { background: url('https://pbs.twimg.com/media/GSqVlx8XAAAJjIz.png') center/cover no-repeat; }
+    .blue { background: url('https://pbs.twimg.com/media/FJCBc-gXMAIKpnT.png') center/cover no-repeat; }
+
+     .obstaculo {
+      position: absolute; bottom: 50px;
+      width: 100px; height: 130px;
+      background: url('https://i.pinimg.com/originals/cc/7e/c2/cc7ec2284dc3ec5d419ef4c26c57fee7.png') center/cover no-repeat;
+      animation: mover 3s linear forwards;
+    }
+    .rayo {
+      position: absolute;
+      width: 40px; height: 40px;
+      background: url('https://freepngimg.com/thumb/anime/118811-kamehameha-ball-dragon-download-free-image-thumb.png') center/contain no-repeat;
+      background-size: contain;
+      animation: rayo-move 1s linear forwards;
+    }
+    .jefe {
+      position: absolute; bottom: 60px;
+      width: 160px; height: 180px;
+      animation: jefe-move 5s linear forwards;
+    }
+
+    @keyframes mover {
+      from { right: -80px; }
+      to { right: 100vw; }
+    }
+    @keyframes salto {
+      0%,100% { bottom: 50px; }
+      50% { bottom: 200px; }
+    }
+    @keyframes rayo-move {
+      from { left: 130px; }
+      to { left: 100vw; }
+    }
+    @keyframes jefe-move {
+      0% { right: -150px; }
+      100% { right: 50vw; }
+    }
+
+    .saltar { animation: salto 0.5s ease-out; }
+
+    #puntaje {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(0,0,0,0.5);
+      color: white; padding: 5px 10px; border-radius: 5px;
+      font-size: 1.2em;
+    }
+    #mensaje {
+      display: none;
+      position: absolute; top: 40%; left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 3em; color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="juego">
+    <div id="goku" class="ssj1"></div>
+    <div id="puntaje">Puntaje: 0</div>
+    <div id="mensaje">¡Game Over!</div>
+  </div>
+
+  <audio id="salto-snd" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+  <audio id="kame-snd" src="https://www.myinstants.com/media/sounds/kamehameha-short.mp3"></audio>
+  <audio id="perder-snd" src="https://www.myinstants.com/media/sounds/windows-xp-error.mp3"></audio>
+
+  <script>
+    const goku = document.getElementById('goku');
+    const juego = document.getElementById('juego');
+    const puntajeElem = document.getElementById('puntaje');
+    const mensaje = document.getElementById('mensaje');
+
+    const saltoSnd = document.getElementById('salto-snd');
+    const kameSnd = document.getElementById('kame-snd');
+    const perderSnd = document.getElementById('perder-snd');
+
+    let puntaje=0, saltando=false, terminado=false, jefeActivo=false;
+
+    function actualizarGoku(){
+      if(puntaje>=40) goku.className='blue';
+      else if(puntaje>=20) goku.className='ssj2';
+      else goku.className='ssj1';
+    }
+
+    function saltar(){
+      if(saltando||terminado) return;
+      saltoSnd.play();
+      saltando=true;
+      goku.classList.add('saltar');
+      setTimeout(()=>{
+        goku.classList.remove('saltar');
+        saltando=false;
+      },500);
+    }
+
+    function lanzarKame(){
+      if(terminado) return;
+      kameSnd.play();
+      const kame = document.createElement('div');
+      kame.className = 'rayo';
+      kame.style.bottom='120px';
+      kame.style.left='130px';
+      juego.appendChild(kame);
+
+      const intervalo = setInterval(()=>{
+        document.querySelectorAll('.obstaculo, .jefe').forEach(e=>{
+          if(!e) return;
+          const kR = kame.getBoundingClientRect(), eR = e.getBoundingClientRect();
+          if(kR.right>eR.left && kR.left<eR.right && kR.bottom>eR.top){
+            e.remove();
+            if(e.classList.contains('obstaculo')) puntaje+=5;
+            else puntaje+=20;
+            actualizarGoku(); actualizarPuntaje();
+            kame.remove(); clearInterval(intervalo);
+          }
+        });
+      },50);
+
+      kame.addEventListener('animationend',()=> kame.remove());
+    }
+
+    function crearObstaculo(){
+      if(terminado||jefeActivo) return;
+      const obs = document.createElement('div');
+      obs.className='obstaculo';
+      juego.appendChild(obs);
+
+      setTimeout(()=>obs.remove(),3000);
+
+      const intv = setInterval(()=>{
+        if(terminado) clearInterval(intv);
+        const gR=goku.getBoundingClientRect(), oR=obs.getBoundingClientRect();
+        if(gR.left<oR.right && gR.right>oR.left && gR.bottom>oR.top){
+          terminar();
+          clearInterval(intv);
+        }
+      },50);
+
+      if(Math.random()<0.3){
+        setTimeout(()=>{
+          const r = document.createElement('div');
+          r.className='rayo';
+          r.style.bottom='120px';
+          r.style.left=`${window.innerWidth}px`;
+          juego.appendChild(r);
+          setTimeout(()=>r.remove(),1000);
+        },500);
+      }
+    }
+
+    function crearJefe(imgUrl){
+      jefeActivo=true;
+      const jefe = document.createElement('div');
+      jefe.className='jefe';
+      jefe.style.background=`url('${imgUrl}') center/cover no-repeat`;
+      juego.appendChild(jefe);
+
+      jefe.addEventListener('animationend',()=>{
+        jefeActivo=false;
+        jefe.remove();
+      });
+
+      setTimeout(()=>{
+        const intv = setInterval(()=>{
+          if(terminado) clearInterval(intv);
+          const gR=goku.getBoundingClientRect(), jR=jefe.getBoundingClientRect();
+          if(gR.left<jR.right && gR.right>jR.left && gR.bottom>jR.top){
+            terminar();
+            clearInterval(intv);
+          }
+        },50);
+      },1000);
+    }
+
+    function terminar(){
+      terminar=true;
+      perderSnd.play();
+      mensaje.style.display='block';
+    }
+
+    function actualizarPuntaje(){
+      puntajeElem.textContent='Puntaje: '+puntaje;
+    }
+
+    setInterval(()=>{
+      if(terminado) return;
+      puntaje++;
+      actualizarGoku();
+      actualizarPuntaje();
+      if(puntaje%50===0){
+        crearJefe(puntaje===50?
+          'https://ih1.redbubble.net/image.3692402683.1490/st,small,507x507-pad,600x600,f8f8f8.jpg':
+          'https://art.pixilart.com/thumb/214c11e72257226.png');
+      }
+    },1000);
+
+    setInterval(crearObstaculo,2000);
+
+    document.addEventListener('keydown',(e)=>{
+      if(e.code==='Space') saltar();
+      if(e.code==='KeyK') lanzarKame();
+    });
+  </script>
+</body>
+</html>

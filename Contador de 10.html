@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contador con barra espaciadora</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #contador {
+      font-size: 48px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Presioná la barra espaciadora</h1>
+  <div id="contador">0</div>
+
+  <script>
+    let contador = 0;
+
+    document.addEventListener("keydown", function(event) {
+      // Código 32 es la barra espaciadora
+      if (event.code === "Space") {
+        contador += 10;
+        document.getElementById("contador").textContent = contador;
+      }
+    });
+  </script>
+
+</body>
+</html>

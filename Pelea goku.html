@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dragon Ball Pixel Fight</title>
+  <style>
+    canvas {
+      display: block;
+      margin: 0 auto;
+      border: 3px solid yellow;
+    }
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>🥊 Dragon Ball Pixel Fight</h1>
+  <p>
+    Jugador 1: A/D moverse, W atacar, S saltar |
+    Jugador 2: ←/→ moverse, ↑ atacar, ↓ saltar
+  </p>
+  <canvas id="gameCanvas" width="1200" height="600"></canvas>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const playerWidth = 50;
+    const playerHeight = 80;
+    const ground = canvas.height - playerHeight;
+    const gravity = 2;
+
+    const keys = {};
+    const explosions = [];
+
+    const bgImage = new Image();
+    bgImage.src = "https://i.pinimg.com/736x/fc/00/03/fc0003a447fef2c1c94fd3ebba42e756.jpg";
+
+    const gokuImg = new Image();
+    gokuImg.src = "https://ih1.redbubble.net/image.3680630368.8464/st,small,507x507-pad,600x600,f8f8f8.jpg";
+     const gokuRun = ["https://ibb.co/7xMFP6Gw"];
+    const gokuAttack = ["https://ibb.co/JW6wM08s"];
+    const gokuJump = ["https://ibb.co/20pXrCzf"];
+
+    const vegetaImg = new Image();
+    vegetaImg.src = "https://i.pinimg.com/736x/9e/0e/23/9e0e2335e644762c8cd7346f4e42a321.jpg";
+    const vegetaRun = ["https://i.imgur.com/8GZP2eK.png", "https://i.imgur.com/x57Exmp.png"];
+    const vegetaAttack = ["https://i.imgur.com/UvTxedO.png"];
+    const vegetaJump = ["https://i.imgur.com/X0E10kH.png"];
+
+    const explosionImg = new Image();
+    explosionImg.src = "https://thumbs.dreamstime.com/b/efecto-del-golpe-arte-pixel-vector-119005524.jpg";
+
+    let frame = 0;
+    
+    let player1 = {
+      x: 100,
+      y: ground,
+      vx: 0,
+      vy: 0,
+      img: gokuImg,
+      hp: 100,
+      jumping: false
+    };
+
+    let player2 = {
+      x: 600,
+      y: ground,
+      vx: 0,
+      vy: 0,
+      img: vegetaImg,
+      hp: 100,
+      jumping: false
+    };
+
+    function drawPlayer(player) {
+      ctx.drawImage(player.img, player.x, player.y, playerWidth, playerHeight);
+    }
+
+    function drawHP() {
+      ctx.fillStyle = "red";
+      ctx.fillRect(20, 20, player1.hp * 2, 20);
+      ctx.fillRect(canvas.width - 20 - player2.hp * 2, 20, player2.hp * 2, 20);
+    }
+
+    function attack(attacker, defender) {
+      const inRange = Math.abs(attacker.x - defender.x) < playerWidth;
+      if (inRange && defender.hp > 0) {
+        defender.hp -= 10;
+        defender.hp = Math.max(defender.hp, 0);
+
+        // Efecto visual: explosión
+        explosions.push({
+          x: (attacker.x + defender.x) / 2,
+          y: attacker.y,
+          timer: 15
+        });
+
+        // Retroceso al recibir golpe
+        const knockback = 20;
+        if (attacker.x < defender.x) {
+          defender.x += knockback;
+        } else {
+          defender.x -= knockback;
+        }
+      }
+    }
+
+    function updatePlayer(player) {
+      player.y += player.vy;
+      player.vy += gravity;
+
+      if (player.y >= ground) {
+        player.y = ground;
+        player.jumping = false;
+      }
+    }
+
+    function update() {
+      // Movimiento lateral
+      if (keys["a"]) player1.x -= 4;
+      if (keys["d"]) player1.x += 4;
+      if (keys["ArrowLeft"]) player2.x -= 4;
+      if (keys["ArrowRight"]) player2.x += 4;
+
+      // Saltos
+      if (keys["s"] && !player1.jumping) {
+        player1.vy = -25;
+        player1.jumping = true;
+      }
+      if (keys["ArrowDown"] && !player2.jumping) {
+        player2.vy = -25;
+        player2.jumping = true;
+      }
+
+      updatePlayer(player1);
+      updatePlayer(player2);
+
+      // Limitar dentro del canvas
+      player1.x = Math.max(0, Math.min(player1.x, canvas.width - playerWidth));
+      player2.x = Math.max(0, Math.min(player2.x, canvas.width - playerWidth));
+
+      // Actualizar explosiones
+      for (let i = explosions.length - 1; i >= 0; i--) {
+        explosions[i].timer--;
+        if (explosions[i].timer <= 0) {
+          explosions.splice(i, 1);
+        }
+      }
+    }
+
+    function drawExplosions() {
+      explosions.forEach(ex => {
+        ctx.drawImage(explosionImg, ex.x, ex.y, 60, 60);
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+      drawPlayer(player1);
+      drawPlayer(player2);
+      drawExplosions();
+      drawHP();
+
+      if (player1.hp <= 0 || player2.hp <= 0) {
+        ctx.fillStyle = "black";// color del texto cuando termina el juego
+        ctx.font = "40px sans-serif";
+        const winner = player1.hp <= 0 ? "Vegeta" : "Goku";
+        ctx.fillText(winner + " gana!", canvas.width / 2 - 100, canvas.height / 2);
+      }
+    }
+
+    function gameLoop() {
+      update();
+      draw();
+      requestAnimationFrame(gameLoop);
+    }
+
+    document.addEventListener("keydown", e => {
+      keys[e.key] = true;
+      if (e.key === "w") attack(player1, player2);
+      if (e.key === "ArrowUp") attack(player2, player1);
+    });
+
+    document.addEventListener("keyup", e => {
+      keys[e.key] = false;
+    });
+
+    window.onload = () => {
+      gameLoop();
+    };
+  </script>
+</body>
+</html>
